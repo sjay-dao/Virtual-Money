@@ -1,0 +1,69 @@
+/*
+SQLyog Ultimate v11.5 (64 bit)
+MySQL - 10.1.28-MariaDB : Database - fg
+*********************************************************************
+*/
+
+
+/*!40101 SET NAMES utf8 */;
+
+/*!40101 SET SQL_MODE=''*/;
+
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`fg` /*!40100 DEFAULT CHARACTER SET latin1 */;
+
+USE `fg`;
+
+/*Table structure for table `items_tbl` */
+
+DROP TABLE IF EXISTS `items_tbl`;
+
+CREATE TABLE `items_tbl` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `survey_id` int(11) DEFAULT NULL,
+  `item_name` varchar(30) DEFAULT NULL,
+  `voteupcnt` int(11) NOT NULL DEFAULT '0',
+  `votedowncnt` int(11) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Table structure for table `tbl_user` */
+
+DROP TABLE IF EXISTS `tbl_user`;
+
+CREATE TABLE `tbl_user` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) DEFAULT NULL,
+  `email` varchar(30) DEFAULT NULL,
+  `contact` varchar(13) DEFAULT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `user_code` varchar(12) NOT NULL,
+  `admin` int(1) NOT NULL DEFAULT '0',
+  `username` varchar(20) DEFAULT NULL,
+  `password` varchar(20) DEFAULT NULL,
+  `passwordcode` varchar(10) DEFAULT NULL,
+  `imageurl` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=latin1;
+
+/*Table structure for table `transaction_tbl` */
+
+DROP TABLE IF EXISTS `transaction_tbl`;
+
+CREATE TABLE `transaction_tbl` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `sender` varchar(13) DEFAULT NULL,
+  `receiver` varchar(13) DEFAULT NULL,
+  `amount` float DEFAULT '0',
+  `transact_code` varchar(30) DEFAULT NULL,
+  `status` varchar(8) NOT NULL DEFAULT 'PENDING',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
